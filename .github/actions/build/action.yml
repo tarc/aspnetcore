@@ -1,0 +1,28 @@
+name: "Build"
+description: "Build ASP.NET Core"
+inputs:
+  build-args:
+    description: "Build arguments"
+    required: false
+    default:
+      -ci
+      -configuration Release
+      --pack
+      --all
+      --no-build-nodejs
+      --no-build-java
+      -p:OnlyPackPlatformSpecificPackages=true
+      -bl:artifacts/log/build.macos.binlog
+      -p:AssetManifestFileName=aspnetcore-MacOS_x64.xml
+
+runs:
+  using: "composite"
+  steps:
+    - run: echo "${PWD}/.dotnet/tools" >> $GITHUB_PATH
+      shell: bash
+    - run: |
+        echo "PATH: ${PATH}"
+      shell: bash
+    - run: |
+        ./build.sh ${{ inputs.build-args }}
+      shell: bash

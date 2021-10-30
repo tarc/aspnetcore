@@ -1,0 +1,19 @@
+#
+# Based on /.azure/pipelines/ci.yml
+#
+
+name: Buld
+
+on: [push]
+
+jobs:
+  MacOs_x64_build:
+    name: "Build: macOS"
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          submodules: recursive
+      - name: Build
+        uses: ./.github/actions/build
