@@ -12,7 +12,6 @@ inputs:
       -ci
       --pack
       --all
-      --no-build-nodejs
       --no-build-java
       -p:OnlyPackPlatformSpecificPackages=true
       -bl:artifacts/log/build.macos.binlog
