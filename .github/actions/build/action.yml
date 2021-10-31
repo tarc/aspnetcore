@@ -1,12 +1,15 @@
 name: "Build"
 description: "Build ASP.NET Core"
 inputs:
+  configuration:
+    description: "Configuration"
+    required: false
+    default: "Debug"
   build-args:
     description: "Build arguments"
     required: false
     default:
       -ci
-      -configuration Release
       --pack
       --all
       --no-build-nodejs
@@ -21,8 +24,5 @@ runs:
     - run: echo "${PWD}/.dotnet/tools" >> $GITHUB_PATH
       shell: bash
     - run: |
-        echo "PATH: ${PATH}"
-      shell: bash
-    - run: |
-        ./build.sh ${{ inputs.build-args }}
+        ./build.sh -configuration ${{ inputs.configuration }} ${{ inputs.build-args }}
       shell: bash
