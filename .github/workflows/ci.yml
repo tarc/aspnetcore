@@ -16,4 +16,4 @@ jobs:
           fetch-depth: 0
           submodules: recursive
       - name: Build
-        uses: ./.github/actions/build
+        uses: tarc/aspnetcore-source-build-action@v1
