@@ -17,3 +17,5 @@ jobs:
           submodules: recursive
       - name: Build
         uses: tarc/aspnetcore-source-build-action@677f8965a3fda99519f1db576500783a522c53df
+        with:
+          artifact_name: 'packages'
